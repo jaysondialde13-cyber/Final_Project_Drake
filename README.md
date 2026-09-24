@@ -1,16 +1,56 @@
-# React + Vite
+# Smart To-Do
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Smart To-Do is a task-management web application that helps users organize their daily work and decide what to do first. Along with standard task tracking, it uses Google Gemini AI to suggest a priority order based on each active task's deadline and importance.
 
-Currently, two official plugins are available:
+Created by **Jayson M. Dialde**, 3rd Year BSIT student at **St. Paul University Surigao**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## What the app does
 
-## React Compiler
+Users can create tasks with a title, optional description, due date, and importance level. The dashboard provides a quick view of active, completed, overdue, and high-importance tasks. Tasks can be searched, filtered, edited, completed, deleted, and restored with Undo.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The app also includes light and dark themes and displays helpful focus tips for planning a productive day.
 
-## Expanding the ESLint configuration
+## How AI prioritization works
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Add one or more active tasks, including their due dates and importance levels.
+2. Select **Prioritize with Gemini**.
+3. The app sends only the incomplete tasks to Gemini.
+4. Gemini returns a ranked priority for every task, with a short reason for each recommendation.
+5. Each task receives an **AI #** badge. Choose **Gemini priority** in the Sort menu to display the tasks in Gemini's recommended order.
+
+Gemini's recommendations consider deadlines and importance, but the user remains in control of their tasks and final decisions.
+
+## Technologies used
+
+- **React** for the user interface
+- **Vite** for development and production builds
+- **JavaScript** and **CSS** for application behavior and styling
+- **Google Gemini API** through `@google/genai` for AI task prioritization
+- **Lucide React** for interface icons
+- **Browser Local Storage** to save tasks and theme preferences on the device
+
+## Running the project locally
+
+1. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+2. Create a `.env.local` file and add your Gemini API key:
+
+   ```env
+   VITE_GEMINI_API_KEY=your_api_key_here
+   ```
+
+3. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Open the local URL shown in the terminal.
+
+## Important note
+
+The Gemini API key is intended for local development. For a deployed production app, API requests should go through a secure backend or serverless function so the key is not exposed in the browser.
