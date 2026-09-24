@@ -51,6 +51,16 @@ Gemini's recommendations consider deadlines and importance, but the user remains
 
 4. Open the local URL shown in the terminal.
 
+## Deploying to Netlify
+
+This app reads `VITE_GEMINI_API_KEY` during the Vite build. A local `.env.local` file is not uploaded to Netlify.
+
+1. In Netlify, open the site and go to **Project configuration > Environment variables**.
+2. Add `VITE_GEMINI_API_KEY` with your Gemini API key. Apply it to the deploy contexts you use, such as **Production**.
+3. Trigger a new deploy with **Deploys > Trigger deploy > Deploy site**.
+
+The variable must be present before the build starts. Do not commit `.env.local` or put the API key in source control. Because `VITE_` variables are included in browser JavaScript, use a serverless/backend proxy for a production app where the key must remain private.
+
 ## Important note
 
 The Gemini API key is intended for local development. For a deployed production app, API requests should go through a secure backend or serverless function so the key is not exposed in the browser.
