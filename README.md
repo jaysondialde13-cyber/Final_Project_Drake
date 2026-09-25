@@ -64,4 +64,3 @@ The variable must be present before the build starts. Do not commit `.env.local`
 ## Important note
 
 The Gemini API key is intended for local development. For a deployed production app, API requests should go through a secure backend or serverless function so the key is not exposed in the browser.
- 
